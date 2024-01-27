@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="lib.js"></script>
+    <script src="script.js" defer></script>
+    <title>Image Gallery</title>
+  </head>
+
+  <body>
+    <div class="modal" id="form-modal">
+      <form action="post" class="form" id="add-form">
+        <div class="form-header">
+          <h2>Add Link</h2>
+          <button type="button" class="close-button" id="form-close-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-x"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M18 6l-12 12"></path>
+              <path d="M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <label for="name" class="form-input">
+          <span>Name*</span>
+          <input
+            type="text"
+            placeholder="Google"
+            id="name"
+            name="name"
+            required
+          />
+        </label>
+        <label for="url" class="form-input">
+          <span>URL*</span>
+          <input
+            type="text"
+            placeholder="https://google.com/"
+            id="url"
+            name="url"
+            required
+          />
+        </label>
+        <label for="tags" class="form-input">
+          <span
+            >Tags<sup><small>1</small></sup></span
+          >
+          <input
+            type="text"
+            placeholder="search,engine,images"
+            id="tags"
+            name="tags"
+          />
+        </label>
+        <button type="submit" class="form-submit" id="submit">Submit</button>
+        <p>
+          <small>1. Words must be separated by commas without spaces.</small>
+        </p>
+      </form>
+    </div>
+
+    <div></div>
+    <div class="space"></div>
+    <h1>Search Links</h1>
+    <div class="content">
+      <div class="nav">
+        <!-- adds some space to center the search box -->
+        <div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+
+        <div class="search-container">
+          <input
+            type="text"
+            id="search"
+            class="search-input"
+            placeholder="Search..."
+          />
+          <button class="search-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="search-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+              <path d="M21 21l-6 -6"></path>
+            </svg>
+          </button>
+        </div>
+
+        <button id="add-button" class="add-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-plus"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 5l0 14"></path>
+            <path d="M5 12l14 0"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+    </div>
+  </body>
+</html>
