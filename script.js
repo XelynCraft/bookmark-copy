@@ -18,10 +18,9 @@ function includesFromStrInArray(array, value){
 // Inside the function, extract the title, url, and color from the passed 'link' array
 // ...
 function renderLink(link){
-    let title = document.getElementById("name");
-    let url = document.getElementById("url");
-    let color = document.getElementById("modal-form");
-    link = [title, url, color]; 
+    const title = link[1];
+    const url = link[2];
+    const color = link[3]; 
 // Create an anchor element and assign it to the variable 'linkEl'
 // ...
 // Similarly, create image, heading and button elements
