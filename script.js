@@ -7,8 +7,9 @@
 // The function should loop through the array parameter and check if any of the items in the array parameter includes the value parameter.
 // If any of the items in the array parameter includes the value parameter, the function should return true. Otherwise, the function should return false.
 function includesFromStrInArray(array, value){
-array.includes(value);
+    return array.includes(value);
 }
+
 // ...
 // ----------------- Part 2 ----------------- //
 // Create a function called renderLink. It takes a parameter 'link' which is an array containing information about a link.
