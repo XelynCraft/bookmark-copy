@@ -76,31 +76,29 @@ function includesFromStrInArray(array, value){
    function filterLinks(links, query){
    // Convert the search term to lower case and remove white space from both ends
    // ...
-   query = document.getElementById("search");
-   let lowerCase = query.value.toLowerCase();
-   let trim = query.value.trim();
-   query.innerHTML = lowerCase + trim;
+   let lowerCase = query.toLowerCase();
    // Check if the search term is empty
    // ...
    if (query == ""){
+       renderLinks(links);
+       return;
+   }
    // Initialize an empty array to hold the selected links
    // ...
    selectedLinks = [];
-   return links;
-   } else {
+    
    // If the search term is not empty, loop through the 'links' array.
    // If a link's title or tags includes the search term, add the link to the 'selectedLinks' array.
    // ...
-   for (let i = 0; document.getElementById("url" + i); i++){
-       links[i] = document.getElementByID("url" + i).value;
-       selectedLinks.push(links);
-       return selectedLinks;
+   for (let i = 0; i < links.length; i++){
+   if (includesFromStrInArray(links[i][2], lowerCase))
+       selectedLinks.push(links [i]);
    }
+   renderLinks(selectedLinks)
    // If the search term is empty, return the original 'links' array. Otherwise, return the 'selectedLinks' array.
    // ...
    } 
-   }
-   filterLinks();
+   
    // ----------------- Part 6 ----------------- //
    // Create a function called renderLinks. It takes a parameter 'links' which is an array of links.
    // The function clears the gallery's HTML content and re-renders the links.
@@ -127,16 +125,10 @@ function includesFromStrInArray(array, value){
    // Add an event listener to the search input field that listens for the 'input' event, which is fired whenever the user types into the field.
    // When the event is fired, get the search term from the input field, filter the links using the search term, and re-render the filtered links.
    // ...
-   search.addEventListener("input", function eventFired(gallery, links){
-   for (i = 0; i < gallery.length; i++){
-       a = links[i].getElementsByTagName("a")[0];
-       txtValue = a.textContent || a.innerText;
-       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-           links[i].style.display = "";
-         } else {
-           links[i].style.display = "none";
-         }
-   }})
+   search.addEventListener("input", function eventFired(){
+       let input = document.getElementById("search").value.trim();
+       filterLinks(links, input);
+   })
    // Call the renderLinks function to render all the links when the page loads.
    // ...
    renderLinks(links);
@@ -182,13 +174,13 @@ function includesFromStrInArray(array, value){
    let name = document.getElementById("name");
        let url = document.getElementById("url");
        let tags = document.getElementById("tags");
-       let array = [name, url, tags, color];
-       let tagsArray = tags.split(",");
+       let tagsArray = tags.value.split(",");
        tagsArray.slice();
+       let array = [name.value, url.value, tagsArray, color];
    // Save the new link to local storage
    // ...
-   localStorage.setItem("newLink", array);
+   saveLinkToLocalStorage(array);
    // Render the new link on the page
    // ...
-   renderLink();
+   renderLink(array);
    }
